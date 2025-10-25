@@ -1,6 +1,9 @@
+#inputting number of sweets and friends
 a=int(input("Enter the total number of sweets you have: "))
 b=int(input("Enter the number of friends among which sweets will be distributed: "))
+#Max sweets = quotient of division of sweets by friends
 Max_sweets = a//b
+#Left sweets is the remainder of the division of sweets by friends
 Sweets_left = a%b
 print("The max number of sweets each friend is going to get is: ", Max_sweets)
 print("The number of sweets which are gonna be left is: ", Sweets_left)
