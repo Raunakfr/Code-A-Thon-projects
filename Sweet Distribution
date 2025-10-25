@@ -1,53 +1,6 @@
-#tkinter for UI
-import tkinter as tk
-
-#Input window setup
-#root is the main window
-root = tk.Tk()
-root.title("🍬 GFG Sweet Distributor🍬")
-root.geometry("600x400")
-root.configure(bg="black")
-
-# Fonts and colors setup
-font_large = ("Courier", 16, "bold")
-font_medium = ("Courier", 14)
-
-# Labels for both the inputs
-#passing root in every line because the 1st arguement defines where the label is put
-tk.Label(root, text="Total Sweets 🍭:", font=font_large, bg="black", fg="lime").pack(pady=10)
-sweets_entry = tk.Entry(root, font=font_medium, bg="black", fg="yellow")
-#.pack() is used to make sure everything fits perfectly in designated areas
-sweets_entry.pack()
-
-tk.Label(root, text="Number of Friends 👬:", font=font_large, bg="black", fg="lime").pack(pady=10)
-friends_entry = tk.Entry(root, font=font_medium, bg="black", fg="yellow")
-friends_entry.pack()
-
-# Output area
-output = tk.Text(root, font=font_medium, bg="black", fg="orange", height=5)
-#pady used to give space both vertically and horizontally 
-output.pack(pady=20, fill=tk.BOTH, expand=False)
-
-# Function to calculate and display results
-def distribute_sweets():
-    #trying and handling division by zero error/invalid inputs
-    try:
-        a = int(sweets_entry.get())
-        b = int(friends_entry.get())
-        if b == 0:
-            output.delete(1.0, tk.END)
-            output.insert(tk.END, "❌ Number of friends cannot be zero!")
-            return
-        Max_sweets = a // b
-        Sweets_left = a % b
-        output.delete(1.0, tk.END)
-        output.insert(tk.END, f"🍬 Max sweets per friend: {Max_sweets} ⭐\n")
-        output.insert(tk.END, f"🍬 Sweets left over: {Sweets_left} 🍭")
-    except ValueError:
-        output.delete(1.0, tk.END)
-        output.insert(tk.END, "❌ Enter valid integers!")
-
-# Main button which displays the output
-tk.Button(root, text="Distribute Sweets 🍬✨", font=font_large, bg="red", fg="white", command=distribute_sweets).pack(pady=10)
-
-root.mainloop()
+a=int(input("Enter the total number of sweets you have: "))
+b=int(input("Enter the number of friends among which sweets will be distributed: "))
+Max_sweets = a//b
+Sweets_left = a%b
+print("The max number of sweets each friend is going to get is: ", Max_sweets)
+print("The number of sweets which are gonna be left is: ", Sweets_left)
