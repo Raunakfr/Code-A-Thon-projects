@@ -1,0 +1,97 @@
+#Importing sys to exit in case of discrepancy
+import sys
+#creating the variables to stores items bought and their cost
+bill = 0
+written_bill = []
+#Storing items with their values in a dictionary
+items_list = {
+    "Diya": 5,
+    "Candle": 10,
+    "Mustard oil": 50,
+    "Fairy lamp": 100,
+    "Shubh labh signs": 20,
+    "Ashok leaves": 0.25,
+    "Lakshmi-Ganesh idols": 200,
+    "Red cloth": 30,
+    "Yellow cloth": 30
+}
+#Printing the avaialble items in an orderly manner
+a=items_list.items()
+print("The list of avaialable items along with their prices is: \n")\
+#Haphazard looking spacing to make it look clean
+print("Serial Number   ", "Item                    ", "Price(Per unit)")
+count = 1
+for i in a:
+    #" "*numbers to make it uniformly distanced
+    print(count, " "*15+str(i[0]), " "*(25-len(i[0]))+str(i[1]))
+    count +=1
+#Creating loop to keep asking for items untill user enters "n"
+b=False
+while b == False:
+    #Basic shopping menu using if-else
+    c=int(input("\nEnter the serial number of the product you want to buy: "))
+    if c == 1:
+        e=int(input("How many units do you want to buy?: "))
+        #Adding the cost of the items to the bill
+        bill = bill + e*items_list["Diya"]
+        #Adding the item along with its unit price in the bill
+        written_bill.append([("Diya", e)])
+    elif c == 2:
+        e=int(input("How many units do you want to buy?: "))
+        bill = bill + e*items_list["Candle"]
+        written_bill.append([("Candle", e)])
+    elif c == 3:
+        e=int(input("How many units do you want to buy?: "))
+        bill = bill + e*items_list["Mustard oil"]
+        written_bill.append([("Mustard oil", e)])
+    elif c == 4:
+        e=int(input("How many units do you want to buy?: "))
+        bill = bill + e*items_list["Fairy lamp"]
+        written_bill.append([("Fairy lamp", e)])
+    elif c == 5:
+        e=int(input("How many units do you want to buy?: "))
+        bill = bill + e*items_list["Shubh labh signs"]
+        written_bill.append([("Shubh labh signs", e)])
+    elif c == 6:
+        e=int(input("How many units do you want to buy?: "))
+        bill = bill + e*items_list["Ashok leaves"]
+        written_bill.append([("Ashok leaves", e)])
+    elif c == 7:
+        e=int(input("How many units do you want to buy?: "))
+        bill = bill + e*items_list["Lakshmi-Ganesh idols"]
+        written_bill.append([("Lakshmi-Ganesh idols", e)])
+    elif c == 8:
+        e=int(input("How many units do you want to buy?: "))
+        bill = bill + e*items_list["Red cloth"]
+        written_bill.append([("Red cloth", e)])
+    elif c == 9:
+        e=int(input("How many units do you want to buy?: "))
+        bill = bill + e*items_list["Yellow cloth"]
+        written_bill.append([("Yellow cloth", e)])
+    else:
+        print("Invalid input, kindly try again")
+    d=input("You want to buy more?(y/n): ")
+    if d == "y":
+        continue
+    elif d== "n":
+        b=True
+        break
+    else:
+        print("Invalid input, exiting")
+        sys.exit("")
+#Checking if valid for discount
+if bill>500:
+    #Giving 10% discount
+    billnew = bill - ((10/100)*bill)
+    print("Item                    ", "Quantity          ", "   Price")
+    #Using same logic as in the item list to keep it uniform
+    for f in written_bill:
+        print(f[0][0], " "*(25-len(f[0][0]))+str(f[0][1]), " "*20+str(items_list[f[0][0]]*f[0][1]))
+    print("Original total"+" "*33, bill)
+    print("Discounted Total"+" "*31, billnew)
+else:
+    print("Item                    ", "Quantity          ", "   Price")
+    for f in written_bill:
+        print(f[0][0], " "*(25-len(f[0][0]))+str(f[0][1]), " "*20+str(items_list[f[0][0]]*f[0][1]))
+    print("Total"+" "*42, bill)
+
